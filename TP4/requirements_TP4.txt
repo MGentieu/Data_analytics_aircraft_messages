@@ -6,3 +6,5 @@ geopy
 matplotlib
 scikit-learn
 seaborn
+nbformat
+ipykernel
