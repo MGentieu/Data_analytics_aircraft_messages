@@ -49,7 +49,44 @@ def generate_autopilot(flight_df):
         autopilot.append(1)
     return autopilot
 
-# --- Fonction principale ---
+def in_restricted(lat, lon):
+    """
+    Vérifie si une coordonnée (lat, lon) se trouve dans une zone restreinte.
+    Retourne 1 si dans une zone, 0 sinon.
+    """
+    # Liste des zones restreintes (Format: [Sud-Ouest, Nord-Ouest, Nord-Est, Sud-Est])
+    zones = [
+        # Paris (Approximatif)
+        [(48.5, 2.2), (48.9, 2.2), (48.9, 2.6), (48.5, 2.6)],
+        # BA 105 Évreux-Fauville
+        [(48.98, 1.15), (49.07, 1.15), (49.07, 1.29), (48.98, 1.29)],
+        # BA 118 Mont-de-Marsan
+        [(43.87, -0.55), (43.96, -0.55), (43.96, -0.45), (43.87, -0.45)],
+        # BA 113 Saint-Dizier-Robinson
+        [(48.59, 4.85), (48.68, 4.85), (48.68, 4.95), (48.59, 4.95)],
+        # BA 133 Nancy-Ochey
+        [(48.54, 5.90), (48.63, 5.90), (48.63, 6.02), (48.54, 6.02)],
+        # BA 123 Orléans-Bricy
+        [(47.95, 1.70), (48.04, 1.70), (48.04, 1.82), (47.95, 1.82)],
+        # BA 115 Orange-Caritat
+        [(44.10, 4.80), (44.19, 4.80), (44.19, 4.92), (44.10, 4.92)],
+        # BA 106 Bordeaux-Mérignac
+        [(44.79, -0.76), (44.87, -0.76), (44.87, -0.66), (44.79, -0.66)],
+        # BA 107 Vélizy-Villacoublay
+        [(48.75, 2.18), (48.80, 2.18), (48.80, 2.24), (48.75, 2.24)]
+    ]
+
+    for zone in zones:
+        # On extrait les min/max du rectangle
+        lat_min = zone[0][0]
+        lat_max = zone[1][0]
+        lon_min = zone[0][1]
+        lon_max = zone[2][1]
+        
+        if lat_min <= lat <= lat_max and lon_min <= lon <= lon_max:
+            return 1 # True
+            
+    return 0 # False
 
 def process_flight_data(input_csv_path="test_data_dashboard.csv", output_csv_path="test_data_transformed.csv"):
     #print(f"--- Mode Qualité Stricte ---")
@@ -133,18 +170,26 @@ def process_flight_data(input_csv_path="test_data_dashboard.csv", output_csv_pat
         include_groups=False
     ).reset_index(level=0, drop=True)
 
-    # 6. Export
+    # 6. Détection Zones Restreintes
+    print("Vérification des zones restreintes...")
+    df["in_restricted_zone"] = df.apply(
+        lambda row: in_restricted(row["latitude"], row["longitude"]), axis=1
+    )
+
+    # 7. Export
     target_columns = [
         "flight_id", "callsign", 
         "latitude", "longitude", "altitude", 
         "ground_speed", "heading", 
-        "autopilot_on", "deviation_m", "anomaly_type", "timestamp"
+        "autopilot_on", "deviation_m", "in_restricted_zone", 
+        "anomaly_type", "timestamp"
     ]
     
     df_final = df[target_columns]
     
     df_final.to_csv(output_csv_path, index=False)
     #print(f"Terminé : {output_csv_path}")
+    df_final.info()
 
 if __name__ == "__main__":
-    process_flight_data()
+    process_flight_data(input_csv_path="raw_data.csv", output_csv_path="flight_data_transformed.csv")
