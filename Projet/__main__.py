@@ -1,12 +1,4 @@
 import os
-import dash
-from dash import dcc, html, Input, Output, State, dash_table
-import plotly.express as px
-import pandas as pd
-import os
-import time
-import subprocess
-import sys
 
 from recuperation_donnees import load_data_from_websocket
 from transform_data import process_flight_data

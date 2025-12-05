@@ -99,7 +99,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'color': c
     html.Div([
         html.H1("✈️ ADS-B SENTINEL", style={'float': 'left', 'fontWeight': 'bold', 'letterSpacing': '2px'}),
         html.Div([
-            html.Button("🔄 Mettre à jour les données", id='btn-update', n_clicks=0, 
+            html.Button("🔄 Màj les données (10k messages)", id='btn-update', n_clicks=0, 
                        style={'backgroundColor': colors['accent'], 'color': 'white', 'border': 'none', 'fontSize': '16px', 'padding': '10px 20px', 'cursor': 'pointer'}),
             html.Div(id='last-update-time', style={'marginTop': '5px', 'fontSize': '12px', 'color': '#888'})
         ], style={'float': 'right'}),
@@ -213,7 +213,7 @@ def update_data(n_clicks):
         print(">>> Bouton cliqué : Lancement récupération...")
         # 1. Récupération (On limite à 1000 messages pour que l'UI ne freeze pas trop longtemps)
         try:
-            load_data_from_websocket(nb_messages=1000, output_file=RAW_FILE)
+            load_data_from_websocket(nb_messages=10000, output_file=RAW_FILE)
             print(">>> Récupération terminée.")
         except Exception as e:
             print(f"Erreur Récupération : {e}")
@@ -361,4 +361,4 @@ def update_flight_details(selected_flight_id):
 
 if __name__ == '__main__':
     print("Démarrage du Serveur Dash...")
-    app.run(debug=True)
+    app.run(host="127.0.0.1", port=8050, debug=True)
