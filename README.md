@@ -5,12 +5,20 @@
 #### **Pour chaque TP (TP1 à TP4) :**
 
 - Récupérez le notebook présent dans le dossier
-- L'ouvrir dans Google Colab (vous pouvez utiliser le lien présent en ouvrant le notebook Jupyter) *
+- L'ouvrir dans Google Colab (*Liens ci-dessous vers les notebooks*)
 - Allez dans le terminal et clônez le projet
 - Vous pouvez à présent exécuter le notebook.
 
-* Pour le lien vers Colab, voici une illustration :
-![Illustration de l'ouverture du notebook avec Colab](./illustration_lien_vers_Colab.jpg)
+* Pour les notebooks sur Colab, voici les liens directs (*le dépôt est public donc il ne devrait pas y avoir de problème*) :
+
+
+- ```GENTIEU_GOUESSE_TP_decouverte.ipynb``` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MGentieu/Data_analytics_aircraft_messages/blob/main/TP1/GENTIEU_GOUESSE_TP_decouverte.ipynb) 
+
+- ```GENTIEU_GOUESSE_TP2.ipynb``` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MGentieu/Data_analytics_aircraft_messages/blob/main/TP2/GENTIEU_GOUESSE_TP2.ipynb) 
+
+- ```GENTIEU_GOUESSE_TP3_clustering.ipynb``` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MGentieu/Data_analytics_aircraft_messages/blob/main/TP3/GENTIEU_GOUESSE_TP3_clustering.ipynb)
+
+- ```GENTIEU_GOUESSE_TP4.ipynb``` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MGentieu/Data_analytics_aircraft_messages/blob/main/TP4/GENTIEU_GOUESSE_TP4.ipynb) 
 
 ## **Pour le projet :**
 
