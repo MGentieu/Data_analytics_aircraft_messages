@@ -6,3 +6,6 @@ geopy
 matplotlib
 scikit-learn
 seaborn
+folium
+shapely
+python-dotenv
