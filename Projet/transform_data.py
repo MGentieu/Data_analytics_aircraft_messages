@@ -97,7 +97,7 @@ def process_flight_data(input_csv_path="test_data_dashboard.csv", output_csv_pat
     # On supprime TOUTE ligne qui a encore un NaN dans une colonne critique
     initial_count = len(df)
     
-    required_columns = ["latitude", "longitude", "timestamp", "flight_id", "callsign", "ground_speed", "heading"]
+    required_columns = ["latitude", "longitude", "timestamp", "flight_id", "callsign", "ground_speed", "heading", "timestamp"]
     df = df.dropna(subset=required_columns)
     
     final_count = len(df)
@@ -138,13 +138,13 @@ def process_flight_data(input_csv_path="test_data_dashboard.csv", output_csv_pat
         "flight_id", "callsign", 
         "latitude", "longitude", "altitude", 
         "ground_speed", "heading", 
-        "autopilot_on", "deviation_m", "anomaly_type"
+        "autopilot_on", "deviation_m", "anomaly_type", "timestamp"
     ]
     
     df_final = df[target_columns]
     
     df_final.to_csv(output_csv_path, index=False)
-    print(f"Terminé : {output_csv_path}")
+    #print(f"Terminé : {output_csv_path}")
 
 if __name__ == "__main__":
     process_flight_data()
