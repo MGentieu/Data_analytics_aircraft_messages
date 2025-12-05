@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 
-def load_data_from_websocket(nb_messages=5000, output_file="data_dashboard.csv"):
+def load_data_from_websocket(nb_messages=5000, output_file="test_data_dashboard.csv"):
 
     load_dotenv()  # charge automatiquement le fichier .env
 
@@ -71,4 +71,4 @@ def load_data_from_websocket(nb_messages=5000, output_file="data_dashboard.csv")
     print(f"\nDonnées ajoutées dans : {output_file}")
 
 if __name__ == "__main__":
-    load_data_from_websocket(nb_messages=100, output_file="test_data_dashboard.csv")
+    load_data_from_websocket()

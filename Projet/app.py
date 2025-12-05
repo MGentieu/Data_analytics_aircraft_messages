@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
 from geopy.distance import geodesic
+from recuperation_donnees import load_data_from_websocket
 
 # =============================================================================
 # 1. CHARGEMENT ET PRÉPARATION DES DONNÉES
