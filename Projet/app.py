@@ -26,8 +26,8 @@ except Exception as e:
     MODEL_LOADED = False
 
 # Noms de fichiers
-RAW_FILE = "test_data_dashboard.csv"
-TRANSFORMED_FILE = "test_data_transformed.csv"
+RAW_FILE = "raw_data.csv"
+TRANSFORMED_FILE = "flight_data_transformed.csv"
 
 # =============================================================================
 # 2. LOGIQUE MÉTIER ET DONNÉES
